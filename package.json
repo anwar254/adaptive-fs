@@ -1,0 +1,21 @@
+{
+  "name": "adaptive-fs",
+  "version": "1.0.0",
+  "description": "This is a command line project for creating components in adaptive ui project",
+  "main": "app.js",
+  "preferGlobal": true,
+  "bin": {
+    "adaptive-fs": "commands.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./app.js"
+  },
+  "author": "Anwar .M. Sadatt",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^4.1.1",
+    "inquirer": "^7.0.4",
+    "mogoose": "0.0.1-security"
+  }
+}
