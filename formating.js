@@ -1,9 +1,7 @@
 function strArr(str){
-    if(str.includes('-')){
+    if(str.includes('-')){0
         const strArr = str.split('-');
-        for(let arr of strArr){
-            return arr[i].charAt(0).toUpperCase() + arr[i].substr(1);
-        }
+        return strArr.map(item => item.charAt(0).toUpperCase() + item.substr(1))
     }else{
         const strCapitalized = str.charAt(0).toUpperCase() + str.slice(1);
         return [strCapitalized, "Element"];

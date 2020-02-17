@@ -7,7 +7,7 @@
 
     import {css} from 'lit-element';
 
-    export const SummaryElementStyles = css`
+    export const InfoBoxStyles = css`
 
     `;
     

@@ -1,10 +1,10 @@
 
     import {html, css} from 'lit-element';
-    import {TabsElementStyles} from './tabs-element'
+    import {InfoBoxStyles} from './info-box'
 
-    class TabsElement extends TabsElementBase{
+    class InfoBox extends InfoBoxBase{
         static get styles(){
-            TabsElementStyles,
+            InfoBoxStyles,
             css ` 
             :host{
                 disply: block;
@@ -17,10 +17,10 @@
         }
 
         static get is(){
-            return 'tabs-element';
+            return 'info-box';
         }
     }
 
-    customElement.define(TabsElement.is, TabsElement);
+    customElement.define(InfoBox.is, InfoBox);
     
     

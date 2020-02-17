@@ -31,13 +31,13 @@ program
  * 
  */
 
-// program
-//     .command(`delete <type> <name> <theme>`)
-//     .alias('d')
-//     .description('Create component')
-//     .action((type, name, theme) => {
-//         deleteCompnent(type, name, theme);
-//     })
+program
+    .command(`delete <type> <name> <theme>`)
+    .alias('d')
+    .description('Create component')
+    .action((type, name, theme) => {
+        deleteCompnent(type, name, theme);
+    })
 
 // create file
 /**

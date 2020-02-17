@@ -13,7 +13,7 @@ function componentFile(fileName, theme){
     }
     const template = `
     import {html, css} from 'lit-element';
-    import {${toCamelCase(fileName)}Styles} from './${isFormatting()}'
+    import {${toCamelCase(fileName)}Styles} from './${isFormatting()}-css'
 
     class ${toCamelCase(fileName)} extends ${toCamelCase(fileName)}Base{
         static get styles(){

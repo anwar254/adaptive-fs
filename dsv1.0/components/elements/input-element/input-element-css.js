@@ -7,7 +7,7 @@
 
     import {css} from 'lit-element';
 
-    export const TabsElementStyles = css`
+    export const InputElementStyles = css`
 
     `;
     

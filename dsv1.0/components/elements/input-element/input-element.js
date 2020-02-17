@@ -1,10 +1,10 @@
 
     import {html, css} from 'lit-element';
-    import {SummaryElementStyles} from './summary-element'
+    import {InputElementStyles} from './input-element'
 
-    class SummaryElement extends SummaryElementBase{
+    class InputElement extends InputElementBase{
         static get styles(){
-            SummaryElementStyles,
+            InputElementStyles,
             css ` 
             :host{
                 disply: block;
@@ -17,10 +17,10 @@
         }
 
         static get is(){
-            return 'summary-element';
+            return 'input-element';
         }
     }
 
-    customElement.define(SummaryElement.is, SummaryElement);
+    customElement.define(InputElement.is, InputElement);
     
     
