@@ -3,12 +3,21 @@ const program = require('commander');
 const package = require('./package');
 const {
     createComponent, 
-    deleteCompnent
+    deleteCompnent,
+    pwd
 } = require('./actions');
 
 program
-    .version(package.version)
-    .description(package.description)
+    .version("1.2.5")
+    .description("Adaptive fs is a command line interface built to create component in adaptive-ui project")
+
+program
+    .command(`pwd`)
+    .alias('p')
+    .description('current working directory')
+    .action(() => {
+        pwd()
+    })
 
 // creating component
 /**
