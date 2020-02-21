@@ -32,9 +32,13 @@ function componentFile(fileName, theme){
         static get is(){
             return '${isFormatting()}';
         }
+
+        init(pElement, loader) {
+            var self = this;
+        }
     }
 
-    customElement.define(${toCamelCase(fileName)}.is, ${toCamelCase(fileName)});
+    customElements.define(${toCamelCase(fileName)}.is, ${toCamelCase(fileName)});
     
     `;
     return template;

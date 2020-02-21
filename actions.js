@@ -74,7 +74,7 @@ function component(type, file, theme){
 
     try{
         if(isDirSync(path.resolve(path.join(rootPath, `/src/themes/${theme}/components/elements/`)))){
-            if(file.split('-').length > 3){
+            if(file.split('-').length > 4){
                 console.log("\x1b[31m Stop:\x1b[37m The file name must contain at least two words");
                 usage();
                 return;

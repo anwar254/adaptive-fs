@@ -8,7 +8,7 @@ const {
 } = require('./actions');
 
 program
-    .version("1.2.5")
+    .version("1.3.0")
     .description("Adaptive fs is a command line interface built to create component in adaptive-ui project")
 
 program
