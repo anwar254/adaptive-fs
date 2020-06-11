@@ -1,6 +1,4 @@
-const path = require("path");
-
-const toCamelCase = require('./formating');
+const toCamelCase = require('../formating');
 const styles = require('./styles');
 
 function componentFile(fileName, theme){
@@ -13,28 +11,24 @@ function componentFile(fileName, theme){
     }
     const template = `
     import {html, css} from 'lit-element';
-    import {${toCamelCase(fileName)}Styles} from './${isFormatting()}-css'
+
+    import {${toCamelCase(fileName)}Styles} from './${isFormatting()}-css';
+    import {${toCamelCase(fileName)}Base} from '../../../../../elements/base/${isFormatting()}'
 
     class ${toCamelCase(fileName)} extends ${toCamelCase(fileName)}Base{
         static get styles(){
-            ${toCamelCase(fileName)}Styles,
-            css \` 
-            :host{
-                disply: block;
-            }
-            \`
+            return [
+                ${toCamelCase(fileName)}Styles,
+                css \` 
+                :host{
+                    disply: block;
+                }
+                \`
+            ]
         }
 
         render(){
-            return html \`\`
-        }
-
-        static get is(){
-            return '${isFormatting()}';
-        }
-
-        init(pElement, loader) {
-            var self = this;
+            return html \`${toCamelCase(fileName)} is working fine\`
         }
     }
 

@@ -1,4 +1,4 @@
-const toCamelCase = require('./formating');
+const toCamelCase = require('../formating');
 
 function StyleComponentFile(fileName){
     const templates = `

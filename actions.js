@@ -3,8 +3,9 @@ const file = require('fs-extra');
 const path = require('path');
 const {prompt} = require('inquirer');
 
-const componentFile = require('./component');
-const StyleComponentFile = require('./styles');
+const componentFile = require('./templates/component');
+const StyleComponentFile = require('./templates/styles');
+const baseFile = require('./templates/base');
 const strArr = require('./file-formating');
 
 // const rootPath = process.env.HOME || process.env.USERPROFILE;
@@ -67,10 +68,21 @@ function component(type, file, theme){
     const formatted = strArr(file);
     const fileName = `${formatted}.js`;
     const cssFile = `${formatted}-css.js`;
+    const baseName = `${formatted}.js`;
 
     const componentsPath = path.resolve(path.join(rootPath, `/src/themes/${theme}/components/elements/${formatted}`));
     const fileDir = path.resolve(path.join(rootPath, `/src/themes/${theme}/components/elements/${formatted}/${fileName}`));
     const cssDIr = path.resolve(path.join(rootPath, `/src/themes/${theme}/components/elements/${formatted}/${cssFile}`));
+    const baseDir = path.resolve(path.join(rootPath, `/src/elements/base/${baseName}`));
+
+    if(isDirSync(path.resolve(path.join(rootPath, '/src/elements/base/')))){
+      fs.createWriteStream(baseDir);
+      fs.writeFileSync(baseDir, baseFile(file, theme), {encoding: "utf8"});
+
+      console.log("\x1b[32m Success:\x1b[37m the base component was created successully here " + path.resolve(path.join(rootPath, '/src/elements/base/')))
+    }else{
+      console.log(false)
+    }
 
     try{
         if(isDirSync(path.resolve(path.join(rootPath, `/src/themes/${theme}/components/elements/`)))){
@@ -79,6 +91,7 @@ function component(type, file, theme){
                 usage();
                 return;
             }else{
+
                 if(!fs.existsSync(componentsPath)){
                     if(type == 'component'){
                         fs.mkdirSync(componentsPath);
@@ -87,7 +100,8 @@ function component(type, file, theme){
                         fs.writeFileSync(fileDir, componentFile(file, theme), {encoding: "utf8"});
                         fs.writeFileSync(cssDIr, StyleComponentFile(file), {encoding: "utf8"});
     
-                        console.log("\x1b[32m Success:\x1b[37m the component was created successully.")
+                        console.log("\x1b[32m Success:\x1b[37m the component was created successully here " + path.resolve(path.join(rootPath, `/src/themes/${theme}/components/elements/${formatted}/${fileName}`)))
+
                     }else{
                         console.log(`\x1b[31m Please provide the correct arguments for creating ${type}\n`);
                         console.log(`\x1b[37menter 'adaptive-fs --help' for more information`);
@@ -114,8 +128,10 @@ const createFile = (type, name, theme) => {
 
 const deleteCompnent = (type, name, theme) => {
     const formatted = strArr(name);
+    const baseName = `${formatted}.js`;
+    const baseDir = path.resolve(path.join(rootPath, `/src/elements/base/${baseName}`));
     
-    if(!isDirSync(path.resolve(path.join(rootPath, `/src/themes/${theme}/components/elements/`)))){
+    if(!isDirSync(path.resolve(path.join(rootPath, `/src/themes/${theme}/components/elements/`))) ){
         console.log("The directory does not exist");
         usage();
         return;
@@ -124,6 +140,16 @@ const deleteCompnent = (type, name, theme) => {
             if (err) return console.error(err);
             console.log("component deleted successfully!")
           });
+    }
+
+    if(baseDir){
+      fs.unlinkSync(baseDir, err => {
+        if(err){
+          console.log(err)
+        }else{
+          console.log('base component deleted successfully');
+        }
+      })
     }
 }
 

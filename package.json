@@ -1,6 +1,6 @@
 {
   "name": "adaptive-fs",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "This is a command line project for creating components in adaptive ui project",
   "main": "app.js",
   "preferGlobal": true,
